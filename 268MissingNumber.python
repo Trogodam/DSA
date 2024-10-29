@@ -1,0 +1,9 @@
+
+
+numArray = [3,0,1]
+
+count = len(numArray)
+
+for i in range(0,count+1):
+	if i  not in numArray:
+		print(i)
