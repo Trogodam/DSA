@@ -1,0 +1,14 @@
+
+points = list[list[int]]
+
+print("Enter number of points \n")
+
+numberOfPoints = int(input())
+
+for i in range(numberOfPoints):
+	print("Enter point",i+1) 
+	points.append(list(map(int,input().split())))
+	
+
+
+print(points)
