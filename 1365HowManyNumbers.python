@@ -1,0 +1,29 @@
+
+nums = [8,1,2,2,3]
+i = 1  
+solutionNums = []
+#output [4,0,1,1,3]
+
+
+sortedNums = sorted(nums)
+
+dict = {}
+
+for (idx, value) in enumerate(sortedNums):
+	if value not in dict :
+		dict[value] = idx
+
+for i in nums:
+	solutionNums.append(dict[i])
+
+print(solutionNums)
+
+
+
+
+"""
+NOTE: Time complexity is always more important than space complexity.
+
+the magic here is using hashMap to avoid the duplication issue, which 
+resolved for all edge cases
+"""
