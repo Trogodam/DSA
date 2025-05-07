@@ -1,12 +1,35 @@
 
 
 
-let nums = [4,3,2,7,8,2,3,1]
+var nums = [4,3,2,7,8,2,3,1]
 
 func findDisappearedNumbers(_ nums: [Int]) -> [Int] {
-   for x in 0...nums.count{
-      if nums[x] > 0{
+    var nums = nums
+    var result = [Int]()
+    for x in 0..<nums.count{
+        let index = abs(nums[x]) - 1
+        if nums[index] > 0 {
+            nums[index] = -nums[index]
+        }
+    }
+    for y in 0..<nums.count{
+        if nums[y] > 0{
+            result.append(y+1)
+        }
+    }
+    return result
 }
+
+let finalResult = findDisappearedNumbers(nums)
+print(finalResult)
+
+var nums2 = [1,1]
+let finalResult2 = findDisappearedNumbers(nums2)
+print(finalResult2)
+
+
+
+
 /*
 okay what do you wanna do?
 we need to take the array elements, then what?
