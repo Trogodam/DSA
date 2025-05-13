@@ -5,42 +5,52 @@ func spiral(_ matrix: [[Int]]) -> [Int]
 {
     var solution = [Int]()
     var matrix = matrix
-    var m = matrix.count
-    var n = matrix[0].count
+
+    if matrix.isEmpty{
+        return []
+    }
+
+    if matrix[0].isEmpty{
+        return []
+    }
+
+
+    var row = matrix.count
+    var column = matrix[0].count
    
-   while(m>0 && n>0){ 
+   while(row>0 && column>0){ 
     //STEP 1: pop first array element
-    print("m: \(m) n: \(n)")   
     solution.append(contentsOf: matrix.removeFirst())
-    n -= 1 
-    print("solution \(solution)")           
-    print("n after step 1: \(n)") 
+    row -= 1 
+    if row == 0 { break }
 
     //STEP 2: pop last element of each array
-    for i in 0..<n
-    {
-        print("i: \(i)")
-        print("matrix i: \(matrix[i])")
-        solution.append(matrix[i].removeLast())
-        print("solution inside step2: \(solution)")
-    } 
-    m -= 1  
-    print("solution afer step2: \(solution)")
-    print("m after step2 : \(m)")
-
+    if column > 0 {
+        for i in 0..<row {
+            if matrix[i].isEmpty{ break}
+            solution.append(matrix[i].removeLast())
+        }
+        column -= 1
+    }
+    if column == 0 { break }
 
 
     //STEP 3: pop last array in reverse
-    solution.append(contentsOf: matrix.removeLast().reversed())
-    n -= 1
-
+    if row > 0 {
+        solution.append(contentsOf: matrix.removeLast().reversed())
+    }
+    row -= 1
+    if row == 0 { break }
 
 
     //STEP 4: pop first element of each array in reverse
-    for i in n-1...0{
-        solution.append(matrix[i].removeFirst())
+    if row > 0 {
+        for i in row-1...0{
+            if matrix[i].isEmpty { break }
+            solution.append(matrix[i].removeFirst())
+        }
+        column -= 1
     }   
-    m -= 1 
 
 
     //repeat the whole thing
